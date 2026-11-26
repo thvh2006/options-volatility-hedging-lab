@@ -1,0 +1,17 @@
+{
+  "status": "INITIAL_PUBLIC_PAYLOAD_VERIFIED",
+  "repository": "https://github.com/thvh2006/options-volatility-hedging-lab",
+  "visibility": "Public",
+  "initial_remote_head": "1dd10c937c2849cf815776e5bb3a8ef986d04986",
+  "downloaded_files": 53,
+  "missing_files": [],
+  "unexpected_files": [],
+  "hash_mismatches": [],
+  "commit_author_name_check": {
+    "commits_checked": 10,
+    "all_use_username": true,
+    "committer": "GitHub"
+  },
+  "reviewed_candidate_archive_sha256": "61059eb466762174d81832538c78133c31c0304ca6c3ad23a785325b700b9031",
+  "date": "2026-11-26"
+}

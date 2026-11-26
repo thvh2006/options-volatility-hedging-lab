@@ -1,15 +1,16 @@
 {
   "status": "PASS",
   "version": "0.3.0",
-  "archive_sha256": "61059eb466762174d81832538c78133c31c0304ca6c3ad23a785325b700b9031",
-  "archive_bytes": 665590,
-  "verified_files": 50,
+  "archive_sha256": "ee4b29802f8eeefc1c018ab9df33b4e6ce9e746d8d373092d9be7c822c7b4852",
+  "archive_bytes": 666812,
+  "verified_files": 52,
   "archive_crc": "PASS",
   "working_files_match_archive": true,
   "report_evidence_hashes": "PASS",
   "browser_html_hash": "PASS",
   "existing_git_commit_identities": "PASS",
   "identity_scan": "PASS_CURRENT_FILES_OFFICE_XML_AND_PDF_TEXT_METADATA",
-  "publication": "BLOCKED_PENDING_EXPLICIT_PUBLIC_VISIBILITY_CONFIRMATION",
-  "public_remote_created": false
+  "publication": "OWNER_APPROVED_PUBLIC_SYNTHETIC_MODULE",
+  "public_remote_created": true,
+  "repository": "https://github.com/thvh2006/options-volatility-hedging-lab"
 }
