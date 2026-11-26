@@ -21,8 +21,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "3d985f07c3f2f69a6fa2d41e3ccbf44e30032a112e0166d0d5220e181e37b44c",
-      "size_bytes": 4563
+      "sha256": "c712467a05e823d772da710a81252da0ccc0d40fd8b0e14624ed7a70973afde6",
+      "size_bytes": 17146
     },
     {
       "path": "configs/holdout.json",
