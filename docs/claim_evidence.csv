@@ -1,0 +1,9 @@
+claim_id,claim,status,evidence,limit
+H1,More frequent costless matched-model hedging reduces sample error dispersion,synthetic_result,outputs/hedge_cost_frontier.csv,Not a guarantee for every path
+H2,Trading costs can reverse the frequency ranking,synthetic_result,outputs/hedge_cost_frontier.csv,No universally optimal frequency selected
+H3,Volatility mismatch changes hedge errors,synthetic_result,outputs/research_results.json,No observed volatility risk premium claim
+H4,Jump stress can cause large hedge errors,illustration_only,outputs/research_results.json,One jump path is not a tail probability estimate
+H5,An advanced model improves out-of-sample hedge quality,not_tested,none,Do not claim Heston or neural superiority
+M1,Market quotes support a calibrated surface,not_tested,none,No rights-cleared observed dataset admitted
+X1,Independent Excel reproduces pricing Greeks tree and ledger,validated_numerically,outputs/excel_checks.json,Three smooth cases; native Microsoft Excel not tested
+X2,New synthetic evaluation quantifies paired RMSE uncertainty,synthetic_result,outputs/holdout_results.json,Pointwise conditional intervals; no market OOS or universal policy
