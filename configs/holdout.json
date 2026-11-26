@@ -1,0 +1,24 @@
+{
+  "protocol": "synthetic_extension_v1",
+  "declared_before_execution": true,
+  "baseline_seed_range": [94000, 94255],
+  "evaluation_seed_range": [304000, 304255],
+  "paths": 256,
+  "steps": 256,
+  "time": 0.25,
+  "spot": 100,
+  "strike": 100,
+  "rate": 0.04,
+  "drift": 0.04,
+  "hedge_vol": 0.25,
+  "rebalance_every": [1, 4, 16, 64],
+  "fee_bps": [5, 20],
+  "scenarios": [
+    {"id": "flat_25", "first_vol": 0.25, "second_vol": 0.25, "jump_multiplier": 1},
+    {"id": "low_to_high", "first_vol": 0.15, "second_vol": 0.40, "jump_multiplier": 1},
+    {"id": "high_to_low", "first_vol": 0.40, "second_vol": 0.15, "jump_multiplier": 1},
+    {"id": "conditional_down_jump", "first_vol": 0.25, "second_vol": 0.25, "jump_multiplier": 0.80}
+  ],
+  "comparison": {"policy_every": 4, "reference_every": 1, "objective": "difference in RMSE, policy minus reference", "bootstrap_seed": 570001, "bootstrap_replications": 2000},
+  "limits": "New synthetic evaluation block; not market OOS or pre-registration. No policy selected. Jump imposed at midpoint on every stress path, not an estimated jump probability. CIs are pointwise percentile paired bootstrap intervals, conditional on assumptions; no simultaneous inference."
+}

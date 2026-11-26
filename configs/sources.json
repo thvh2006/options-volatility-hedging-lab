@@ -1,0 +1,13 @@
+{
+  "review_date":"2026-11-26",
+  "sources":[
+    {"id":"deribit_linear_specs","publisher":"Deribit","url":"https://support.deribit.com/hc/en-us/articles/31424932728093-Linear-USDC-Options","use":"Exercise, currency, contract multiplier and expiry mechanics. Dynamic page rechecked; not a quote dataset."},
+    {"id":"deribit_delivery_change","publisher":"Deribit","published":"2026-03-12","url":"https://insights.deribit.com/exchange-updates/change-to-option-delivery-process/","use":"Versioned two-step settlement design context."},
+    {"id":"deribit_instruments_api","publisher":"Deribit","url":"https://docs.deribit.com/api-reference/market-data/public-get_instruments","use":"Required metadata fields and settlement-currency selection; examples are not live observations."},
+    {"id":"deribit_orderbook_api","publisher":"Deribit","url":"https://docs.deribit.com/api-reference/market-data/public-get_order_book","use":"Timestamp, state, bid/ask and size schema. Snapshot timestamp is not proof of individual quote posting age."},
+    {"id":"deribit_terms","publisher":"Deribit","url":"https://statics.deribit.com/files/TermsofServiceDeribit.pdf","locator":"Article4.6, PDF page3","use":"Market and derived data publication gate. No rights-cleared observed data admitted."},
+    {"id":"cboe_spx","publisher":"Cboe","url":"https://www.cboe.com/tradable-products/sp-500/spx-options/","use":"Alternative European cash-settled index product. Contract family and AM/PM distinctions need explicit registry."},
+    {"id":"cboe_quote_data","publisher":"Cboe","url":"https://datashop.cboe.com/option-quote-intervals","use":"Alternative historical quote-data access and index licensing constraints; no dataset purchased or included."},
+    {"id":"mit_option_replication","publisher":"MIT OpenCourseWare","author":"Leonid Kogan","url":"https://www.ocw.mit.edu/courses/15-450-analytics-of-finance-fall-2010/0d1260b891a96241316d883d4f5bfaec_MIT15_450F10_lec02.pdf","locator":"PDF pages17-20","use":"Self-financing replication and option-pricing assumptions. Implementation and numerical tests are original project work."}
+  ]
+}

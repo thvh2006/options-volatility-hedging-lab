@@ -1,0 +1,10 @@
+{
+  "version":"0.1.0",
+  "design_date":"2026-11-26",
+  "status":"SYNTHETIC_FOUNDATION",
+  "contract":{"id":"SIM_EUROPEAN_USD","style":"european","settlement":"cash","quote_currency":"USD","settlement_currency":"USD","multiplier":1,"dividend_yield":0,"time_basis":"ACT/365F calendar years","market_observation":false},
+  "benchmark":{"spot":100,"strike":100,"time":1,"rate":0.05,"vol":0.2,"dividend_yield":0,"kind":"call"},
+  "hedge_experiment":{"spot":100,"strike":100,"time":0.25,"rate":0.04,"physical_drift":0.04,"path_steps":256,"paths":256,"base_seed":94000,"hedge_vol":0.25,"realised_vols":[0.15,0.25,0.4],"rebalance_every":[1,4,16,64],"fee_bps":[0,5,20],"half_spread_bps":0,"borrow_spread":0},
+  "market_candidate":{"venue":"Deribit","product":"BTC_USDC linear European options","public_evidence_status":"contract and API documentation reviewed; no observed quote dataset admitted","publication_rights":"UNRESOLVED: market and derived data excluded from public package","hedge_adapter_status":"NOT_IMPLEMENTED: current ledger is synthetic cash-funded spot, not exchange futures margin"},
+  "experiment_policy":{"paired_paths":true,"same_seed_across_frequency_and_cost":true,"pricing_measure":"risk_neutral","scenario_measure":"physical drift explicitly specified","training_holdout":"future calibration extensions need disjoint timestamp windows","claims":"Numerical validation and synthetic hedge error only; no observed backtest, live trading, alpha or investor return."}
+}
