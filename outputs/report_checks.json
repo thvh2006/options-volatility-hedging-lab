@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "pages": 9,
+  "author": "thvh2006",
+  "figures": 2,
+  "source_mode": "saved synthetic project outputs",
+  "title": "P5 Options Volatility and Hedging Lab - Technical Report",
+  "evidence_sha256": {
+    "research_results.json": "6c43dca4ea5964b7a912e24985fc8df7ba10c2c94f6896ae5685fc27c08650bc",
+    "holdout_results.json": "a25ab26ded21fd0bb350f6afd9accd8c69d8a4d17c289fcfdab303b5ace4a25c",
+    "representative_hedge.json": "6b143f99de9a7b06bf7c726d65d30c47892913e347b3ddcb6f6cafb2eddea8ae",
+    "browser_checks.json": "7b963e4e53aa0446b722d1064537ce3ae05fa46aec5640e0addb622c1b446822",
+    "excel_checks.json": "c89d0c6b10bfe1e152c0c64a2ed0a2632a418f352662ee256042499fc3569fbe",
+    "excel_export_checks.json": "c5e149a101fa915ae71da2ca208975e576511c31a14d18ae8719f520377ad3d9",
+    "excel_cross_engine_checks.json": "49fb4a574cb0a0ac19cb3b69445455aa4ab4319aa783019a34aee69eb530d87f",
+    "validation.json": "ea6afbc6abdf42b4ad97e040f273b7640566449c3c32b8901563137b3495c952"
+  }
+}

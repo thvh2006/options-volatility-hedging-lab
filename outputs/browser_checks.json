@@ -1,0 +1,77 @@
+{
+  "status": "PASS_DESKTOP_LOCAL",
+  "browser": "Google Chrome",
+  "viewport": {
+    "width": 1512
+  },
+  "scope": "Local desktop controls and visual inspection; mobile and deployed host not tested",
+  "cases": [
+    {
+      "case": "default_call",
+      "premium": "10.4506"
+    },
+    {
+      "case": "put",
+      "premium": "5.5735"
+    },
+    {
+      "case": "blank_spot",
+      "premium": "Unavailable",
+      "message": "Complete every pricing input. A blank value is not zero."
+    },
+    {
+      "case": "expiry",
+      "premium": "0.0000",
+      "delta": "Unavailable"
+    },
+    {
+      "case": "negative_spot",
+      "rejected": true
+    },
+    {
+      "case": "reset",
+      "premium": "10.4506"
+    },
+    {
+      "case": "fee_20_bps",
+      "rmse_every_1": "1.2498",
+      "rmse_every_4": "0.8658"
+    },
+    {
+      "case": "ledger_terminal",
+      "holding": "0.0000",
+      "cash": "0.5434",
+      "option_liability": "0.0000"
+    },
+    {
+      "case": "download_excel",
+      "sha256_matches_original": true
+    },
+    {
+      "case": "zero_volatility",
+      "premium": "4.8771",
+      "delta": "Unavailable"
+    },
+    {
+      "case": "realised_volatility_15_percent",
+      "every_step_rmse": "1.7576"
+    },
+    {
+      "case": "report_link",
+      "chrome_pdf_viewer_title": "P5 Options Volatility and Hedging Lab - Technical Report",
+      "pages": 9
+    }
+  ],
+  "horizontal_document_overflow": false,
+  "app_console_errors_observed": 0,
+  "other_console_warnings": "Browser extension warnings observed; outside project origin",
+  "screenshot_review": [
+    "calculator",
+    "paired intervals table",
+    "terminal ledger",
+    "path plot and footer"
+  ],
+  "tested_html_sha256": "409661962b31f87ce0cdffa1b65915764d6844578e3d1ab48560eba2d8912d14",
+  "date": "2026-11-26",
+  "accessible_select_labels": "Verified using Option type, Realised path volatility and Spot transaction cost"
+}

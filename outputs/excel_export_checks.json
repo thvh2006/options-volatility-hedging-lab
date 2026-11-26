@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "comparisons": 1031,
+  "maximum_absolute_difference": 7.389644451905042e-13,
+  "formula_errors": 0,
+  "reader": "openpyxl read-only validation",
+  "case": "default call with saved path and 5bps fee",
+  "native_microsoft_excel_tested": false
+}

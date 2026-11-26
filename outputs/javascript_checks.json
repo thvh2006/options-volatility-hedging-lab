@@ -1,0 +1,7 @@
+{
+  "golden_price_comparisons": 108,
+  "absolute_price_tolerance": 0.0001,
+  "maximum_difference": 0.000015678789395678905,
+  "application_checks": 9,
+  "method": "independent JS pricing and minimal-DOM application execution; browser visual layout not verified"
+}
