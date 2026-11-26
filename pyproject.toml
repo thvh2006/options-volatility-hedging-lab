@@ -1,0 +1,7 @@
+[project]
+name = "options-volatility-hedging-lab"
+version = "0.3.0"
+description = "Reproducible European option pricing and self-financing hedge experiments"
+requires-python = ">=3.10"
+authors = [{name = "thvh2006"}]
+dependencies = []

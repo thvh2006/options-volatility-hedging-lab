@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules
+data/private_snapshots/
+outputs/qa/
+*.inspect.ndjson
+.DS_Store
