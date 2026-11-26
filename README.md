@@ -43,14 +43,14 @@ python scripts/package.py
 python scripts/verify_release.py
 ```
 
-The suite has 26 unit tests. Excel authoring requires `@oai/artifact-tool`; read-only exported-file verification requires `openpyxl`. These build dependencies are separate from the standard-library pricing engine. The browser pricer is compared with108 Python prices with an absolute tolerance of0.0001USD per unit. Nine minimal-DOM application checks run during the build. Separate real Chrome checks cover the local desktop controls, table layout and XLSX download; mobile and deployed-host behaviour remain unverified. Report generation uses ReportLab and pypdf, and consumes the saved browser evidence. Rebuilding the report does not itself repeat browser QA.
+The suite has 26 unit tests. Excel authoring requires `@oai/artifact-tool`; read-only exported-file verification requires `openpyxl`. These build dependencies are separate from the standard-library pricing engine. The browser pricer is compared with 108 Python prices with an absolute tolerance of 0.0001 USD per unit. Nine minimal-DOM application checks run during the build. Separate real Chrome checks cover the local desktop controls, table layout and XLSX download; mobile and deployed-host behaviour remain unverified. Report generation uses ReportLab and pypdf, and consumes the saved browser evidence. Rebuilding the report does not itself repeat browser QA.
 
 ## Next milestones
 
-Rights-cleared observed quote QC/calibration; exchange-specific hedge accounting; locked model comparison; mobile/deployed-host QA and public release. These are open work, not hidden behind a completion badge.
+Rights-cleared observed quote QC/calibration; exchange-specific hedge accounting; locked model comparison; mobile/deployed-host QA. These are open work, not hidden behind a completion badge.
 
 Public author identity: `thvh2006` or blank. No raw venue market data, private credentials or personal home paths belong in the repository.
 
 ## Publication status
 
-Public GitHub creation was blocked by automatic approval review pending explicit owner confirmation of public visibility. No remote has been created. `docs/PUBLICATION_REVIEW.md` describes the exact payload and destination for review. This local build remains reviewable without public hosting.
+Public source repository: [https://github.com/thvh2006/options-volatility-hedging-lab](https://github.com/thvh2006/options-volatility-hedging-lab). Owner approved public distribution on 26 November 2026. The initial GitHub archive was downloaded and all 53 published files matched their reviewed local hashes. Public commit author names were checked and use `thvh2006`. The downloadable source ZIP includes methods, synthetic outputs, Excel and the PDF report. `docs/PUBLICATION_REVIEW.md` records the release scope. This is a public synthetic research module; market-data and venue-accounting milestones remain open.
