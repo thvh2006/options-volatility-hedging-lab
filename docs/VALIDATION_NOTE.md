@@ -55,4 +55,4 @@ Run commands in README in order. `run_research.py` preserves the original baseli
 
 Observed quote rights/QC/calibration, exchange-specific hedge accounting, a locked advanced challenger, mobile/deployed-host visual QA and the observed-market report remain open. The package contains no admitted venue quotes. Public attribution is thvh2006 or blank; personal home paths and names are excluded from packaged files and Office XML.
 
-The synthetic module now has a nine-page technical report, rendered and inspected page by page. Public GitHub creation remains blocked by automatic approval review pending explicit confirmation of public visibility. No public remote was created.
+The synthetic module now has a nine-page technical report, rendered and inspected page by page. Public distribution was explicitly approved and the repository is available at https://github.com/thvh2006/options-volatility-hedging-lab. The first downloaded public archive matched all 53 reviewed file hashes; public commit author names use thvh2006.

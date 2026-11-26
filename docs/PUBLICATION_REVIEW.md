@@ -1,10 +1,10 @@
 # P5 publication review
 
-Prepared for owner review on 26 November 2026. Version 0.3.0.
+Owner-approved public release on 26 November 2026. Version 0.3.0.
 
-## Proposed destination and audience
+## Published destination and audience
 
-Create `thvh2006/options-volatility-hedging-lab` on GitHub with **Public** visibility. Anyone could read and download its contents. No repository or remote has been created yet. Automatic approval review blocked public creation pending explicit confirmation of this visibility and payload. Do not retry publication until that confirmation is received.
+Published at [https://github.com/thvh2006/options-volatility-hedging-lab](https://github.com/thvh2006/options-volatility-hedging-lab) with **Public** visibility after explicit owner approval. Anyone can read and download the reviewed code, synthetic outputs, workbook, notebook and report. The initial downloaded GitHub tree matched all 53 local file hashes. Ten initial public commit author names were checked and use `thvh2006`.
 
 ## Concrete payload
 
@@ -34,4 +34,4 @@ Attribution uses `thvh2006` or blank. No owner legal name or home path is intent
 
 This is a synthetic research module. It makes no observed backtest, live trading, investor-return or universally optimal hedge-frequency claim. Observed data rights/calibration, venue-specific hedge accounting, advanced challengers, mobile and deployed-host QA remain separate work.
 
-Approval of Public visibility would authorize creating this named public repository and uploading this reviewed code, synthetic outputs, XLSX, notebook and PDF. It would not resolve market-data rights or authorize account trading, purchases or publication of future private data.
+Owner approval covers this named public repository and its reviewed code, synthetic outputs, XLSX, notebook and PDF. It does not resolve market-data rights or authorize account trading, purchases or publication of future private data.

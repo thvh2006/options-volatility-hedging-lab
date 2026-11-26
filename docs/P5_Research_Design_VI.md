@@ -113,13 +113,13 @@ Không mua dữ liệu, tạo tài khoản giao dịch hoặc gửi yêu cầu �
 | D Independent Excel | Pricing/Greeks, small tree, một path có cash ledger, checks | Tính độc lập và input perturbation khớp Python | Đã có 9 sheet; đối chiếu 3 bộ input và tái tính chéo |
 | E Market module | Registry xác nhận, quote QC, IV coverage và source dates | Dữ liệu/rights được giải quyết, không tráo mark với executable quotes | Chưa nhận dữ liệu |
 | F Model risk | Regimes/jumps, paired uncertainty, locked challenger | OOS, parameter stability và compute cost có bằng chứng | Đã có seed riêng, regimes và paired intervals; chưa có market OOS/challenger |
-| G Professional release | Dashboard kiểm tra thật, technical report, validation note, public repo | Tất cả claim đúng phạm vi, output tái lập và review render | Đã có report9trang và desktop QA; public release chờ xác nhận, market gates còn mở |
+| G Professional release | Dashboard kiểm tra thật, technical report, validation note, public repo | Tất cả claim đúng phạm vi, output tái lập và review render | Đã có report9trang và desktop QA; public synthetic repo đã đăng, market gates còn mở |
 
 Excel bản0.2 có 9 sheet, gộp Greeks/IV vào Pricing và giữ Experiments dưới nhãn imported. Kiến trúc đề xuất theo nghiệp vụ: Overview; Inputs and Contract; Pricing; Small Tree; Greeks and IV; Hedge Ledger; Cost and Risk; Model Comparison; Checks; Sources. Thêm tab khi có công việc riêng, không tạo19tab chỉ để đủ danh sách. MC lớn và surface calibration được nhập dưới nhãn kết quả mô phỏng/imported; analytical price, Greeks, tree nhỏ và một ledger phải tính độc lập bằng công thức.
 
 Dashboard hoàn chỉnh cần Pricing, Greeks, Chain Quality, Smile/Term Structure, Hedge Replay, Cost/Risk và Data/Validation. Bản0.1 đã có calculator độc lập, bảng36thí nghiệm và replay ledger, chưa có observed smile hoặc validated surface.
 
-Bản0.3 có technical report9trang cho synthetic module, với2figure được dựng từ kết quả đã lưu; đã rà render cả9trang. Report thị trường cuối cùng chỉ viết sau evidence gate, không kéo dài bằng cách lặp code/notebook. Public GitHub chưa được tạo: automatic approval review yêu cầu xác nhận rõ visibility public. Gói cụ thể được liệt kê trong `docs/PUBLICATION_REVIEW.md`.
+Bản0.3 có technical report9trang cho synthetic module, với2figure được dựng từ kết quả đã lưu; đã rà render cả9trang. Report thị trường cuối cùng chỉ viết sau evidence gate, không kéo dài bằng cách lặp code/notebook. Public repo đã được chủ tài khoản đồng ý công khai và đăng tại https://github.com/thvh2006/options-volatility-hedging-lab. Bản tải GitHub đầu tiên khớp53file theo hash; tên tác giả10commit ban đầu đều dùng thvh2006. Gói cụ thể được liệt kê trong `docs/PUBLICATION_REVIEW.md`.
 
 ## 9 Nguồn đã xem
 
