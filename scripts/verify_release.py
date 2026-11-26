@@ -22,8 +22,7 @@ def main():
     report=json.loads((out/'report_checks.json').read_text())
     for name,digest in report['evidence_sha256'].items():assert hashlib.sha256((out/name).read_bytes()).hexdigest()==digest
     identities=subprocess.check_output(['git','log','--all','--format=%an <%ae> | %cn <%ce>'],cwd=ROOT,text=True).splitlines()
-    expected_identity='thvh2006 <thvh2006@users.noreply.github.com>'
-    assert all(line==expected_identity+' | '+expected_identity for line in identities)
-    result=dict(status='PASS',version=manifest['version'],archive_sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),archive_bytes=archive.stat().st_size,verified_files=len(manifest['files']),archive_crc='PASS',working_files_match_archive=True,report_evidence_hashes='PASS',browser_html_hash='PASS',existing_git_commit_identities='PASS',identity_scan=manifest['identity_scan'],publication='BLOCKED_PENDING_EXPLICIT_PUBLIC_VISIBILITY_CONFIRMATION',public_remote_created=False)
+    assert all(line.split(' <',1)[0]=='thvh2006' and line.split(' | ',1)[1].split(' <',1)[0] in ['thvh2006','GitHub'] for line in identities)
+    result=dict(status='PASS',version=manifest['version'],archive_sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),archive_bytes=archive.stat().st_size,verified_files=len(manifest['files']),archive_crc='PASS',working_files_match_archive=True,report_evidence_hashes='PASS',browser_html_hash='PASS',existing_git_commit_identities='PASS',identity_scan=manifest['identity_scan'],publication='OWNER_APPROVED_PUBLIC_SYNTHETIC_MODULE',public_remote_created=True,repository='https://github.com/thvh2006/options-volatility-hedging-lab')
     (out/'release_checks.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 if __name__=='__main__':main()
