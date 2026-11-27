@@ -159,13 +159,15 @@ There is currently **no configured public dashboard deployment**. The repository
 | Excel golden inputs | Python standard library | `python3 scripts/prepare_workbook_data.py` |
 | Formula-based workbook | Node.js with access to `@oai/artifact-tool` | `node scripts/build_workbook.mjs` |
 | Read-only XLSX verification | `openpyxl` | `python3 scripts/verify_workbook.py` |
-| PDF report | `reportlab` and `pypdf` | `python3 scripts/build_report.py` |
+| PDF report | `reportlab`, `pypdf` and Times New Roman regular/bold TTF fonts | `python3 scripts/build_report.py` |
 | Source package | `pypdf` for PDF text/metadata inspection | `python3 scripts/package.py` |
 | Archive/evidence verification | Python standard library; Git history for attribution check | `python3 scripts/verify_release.py` |
 
 Install the optional Python tools with `python3 -m pip install openpyxl reportlab pypdf`. The Excel authoring dependency is supplied in the authoring environment; this repository does not provide a public installation route for it. **The published XLSX can be used without that dependency.**
 
 Run builds in the table's order after the core research and explorer commands. The report consumes the saved browser evidence; rebuilding it does not rerun Chrome QA. Package verification compares current files against the archive, so rebuild the package after changing repository content. A second-engine XLSX check can be recorded with `python3 scripts/verify_workbook.py /path/to/recalculated.xlsx`; recalculation itself must be performed separately.
+
+The PDF uses **Times New Roman, 11 pt throughout**, including headings, table cells, chart labels and footers. Font files are embedded in the PDF but are not redistributed as standalone assets. Report builds look in the macOS supplemental-font directory by default; set `P5_REPORT_FONT_DIR` when the regular and bold TTF files are stored elsewhere.
 
 The recorded build used **Python 3.12.14** and **Node.js 24.22.3**. The engine's declared Python minimum and the recorded build versions serve different purposes; a compatibility matrix has not been established.
 
