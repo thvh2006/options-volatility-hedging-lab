@@ -1,5 +1,13 @@
 {
   "status": "PASS",
+  "font_family": "Times New Roman",
+  "font_sizes_pt": [
+    11.0
+  ],
+  "embedded_text_fonts": [
+    "/AAAAAA+TimesNewRomanPS-BoldMT",
+    "/AAAAAA+TimesNewRomanPSMT"
+  ],
   "pages": 9,
   "author": "thvh2006",
   "figures": 2,

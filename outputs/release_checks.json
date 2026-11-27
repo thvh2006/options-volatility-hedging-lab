@@ -1,8 +1,8 @@
 {
   "status": "PASS",
   "version": "0.3.0",
-  "archive_sha256": "91693695fbf825b44e3d5ee5e0ae6872fec705857a3eff80b540a97aff0e36e8",
-  "archive_bytes": 671524,
+  "archive_sha256": "55313ee4647961884b7ae7b214ff55c78326d81b1adce1ded7fb7d2eeb36b08a",
+  "archive_bytes": 751248,
   "verified_files": 52,
   "archive_crc": "PASS",
   "working_files_match_archive": true,

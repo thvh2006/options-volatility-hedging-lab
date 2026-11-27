@@ -21,8 +21,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "c712467a05e823d772da710a81252da0ccc0d40fd8b0e14624ed7a70973afde6",
-      "size_bytes": 17146
+      "sha256": "c4476ce26b11fcc6e401d2a9b3bcf17a6430b7e123485ac091d2c9a79c32a4e4",
+      "size_bytes": 17536
     },
     {
       "path": "configs/holdout.json",
@@ -86,8 +86,8 @@
     },
     {
       "path": "outputs/P5_Technical_Report.pdf",
-      "sha256": "48b7d82631ebbe3b918fecf53eced2a3e105dcb20d0817716f78424000aceaf9",
-      "size_bytes": 24837
+      "sha256": "3e4cdcc598474ee5a52494f518226becea54019f0fc66fd66c28dcc00fe087d3",
+      "size_bytes": 105233
     },
     {
       "path": "outputs/browser_checks.json",
@@ -146,8 +146,8 @@
     },
     {
       "path": "outputs/report_checks.json",
-      "sha256": "ed54c112ab9fbce61eb4f5583948ecf5ab1f5eccf7f0cec0b11503bd696488f9",
-      "size_bytes": 1006
+      "sha256": "88ef6eed8c5a4e4626f294f8471b3f4829e7f06299df3c7cfc356f7d98accea1",
+      "size_bytes": 1179
     },
     {
       "path": "outputs/representative_hedge.json",
@@ -186,8 +186,8 @@
     },
     {
       "path": "scripts/build_report.py",
-      "sha256": "c6c6f506b76feb30a875268ef1b48fa946447aec610448114e3285b96bc19aad",
-      "size_bytes": 23177
+      "sha256": "2a6b508a7692658eb8c029c847d8ab8b547738c87ed591448fa0f87770e5e26e",
+      "size_bytes": 24226
     },
     {
       "path": "scripts/build_walkthrough.py",
