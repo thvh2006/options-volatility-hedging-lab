@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Build an evidence-linked technical report from saved synthetic results."""
-import json,math
+import json,math,os,re
 from pathlib import Path
 import hashlib
 from xml.sax.saxutils import escape
 from reportlab.lib import colors
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,PageBreak,Table,TableStyle
@@ -13,56 +15,65 @@ from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'outputs'
 NAVY=colors.HexColor('#183B5B');BLUE=colors.HexColor('#236A91');GOLD=colors.HexColor('#AA7328');GREY=colors.HexColor('#627486');LIGHT=colors.HexColor('#EDF3F7')
 W=503
+FONT_SIZE=11
+FONT_REGULAR='TimesNewRoman'
+FONT_BOLD='TimesNewRoman-Bold'
+font_dir=Path(os.environ.get('P5_REPORT_FONT_DIR','/System/Library/Fonts/Supplemental'))
+for name,filename in [(FONT_REGULAR,'Times New Roman.ttf'),(FONT_BOLD,'Times New Roman Bold.ttf')]:
+    font_path=font_dir/filename
+    if not font_path.is_file():raise FileNotFoundError('Times New Roman fonts required. Set P5_REPORT_FONT_DIR to a directory containing the regular and bold TTF files.')
+    pdfmetrics.registerFont(TTFont(name,str(font_path)))
+pdfmetrics.registerFontFamily(FONT_REGULAR,normal=FONT_REGULAR,bold=FONT_BOLD,italic=FONT_REGULAR,boldItalic=FONT_BOLD)
 styles=getSampleStyleSheet()
-styles.add(ParagraphStyle('TitleP5',fontName='Helvetica-Bold',fontSize=25,leading=29,textColor=NAVY,spaceAfter=18))
-styles.add(ParagraphStyle('HeadP5',fontName='Helvetica-Bold',fontSize=16,leading=20,textColor=NAVY,spaceAfter=12))
-styles.add(ParagraphStyle('SubP5',fontName='Helvetica-Bold',fontSize=11,leading=15,textColor=NAVY,spaceBefore=12,spaceAfter=7))
-styles.add(ParagraphStyle('BodyP5',fontName='Helvetica',fontSize=10,leading=14,textColor=NAVY,spaceAfter=10))
-styles.add(ParagraphStyle('SmallP5',fontName='Helvetica',fontSize=8,leading=11,textColor=GREY,spaceAfter=7,wordWrap='CJK'))
-styles.add(ParagraphStyle('CellP5',fontName='Helvetica',fontSize=8.2,leading=11,textColor=NAVY))
-styles.add(ParagraphStyle('CodeP5',fontName='Courier',fontSize=8.2,leading=12,textColor=NAVY,spaceAfter=9))
+for name,bold,before,after in [('TitleP5',True,0,12),('HeadP5',True,0,12),('SubP5',True,9,5),('BodyP5',False,0,8),('SmallP5',False,0,6),('CellP5',False,0,0),('CodeP5',False,0,7)]:
+    styles.add(ParagraphStyle(name,fontName=FONT_BOLD if bold else FONT_REGULAR,fontSize=FONT_SIZE,leading=14,textColor=NAVY,spaceBefore=before,spaceAfter=after,wordWrap='CJK' if name=='SmallP5' else None))
+
+def Text(*args,**kwargs):
+    kwargs.setdefault('fontName',FONT_REGULAR)
+    kwargs['fontSize']=FONT_SIZE
+    return String(*args,**kwargs)
 
 def P(s,kind='BodyP5'):return Paragraph(escape(str(s)),styles[kind])
 def T(headers,rows,widths):
     t=Table([[P(x,'CellP5') for x in headers]]+[[P(x,'CellP5') for x in row] for row in rows],colWidths=widths,repeatRows=1,hAlign='LEFT')
-    t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),LIGHT),('LINEBELOW',(0,0),(-1,0),.7,NAVY),('LINEBELOW',(0,1),(-1,-1),.3,colors.HexColor('#DBE3EA')),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),('TOPPADDING',(0,0),(-1,-1),7),('BOTTOMPADDING',(0,0),(-1,-1),7)]))
+    t.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),LIGHT),('LINEBELOW',(0,0),(-1,0),.7,NAVY),('LINEBELOW',(0,1),(-1,-1),.3,colors.HexColor('#DBE3EA')),('VALIGN',(0,0),(-1,-1),'TOP'),('LEFTPADDING',(0,0),(-1,-1),6),('RIGHTPADDING',(0,0),(-1,-1),6),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5)]))
     return t
 def F(x,n=4):return f'{x:,.{n}f}'
 
 def line_chart(series,labels,title,ylabel):
     d=Drawing(W,269);left=48;bottom=37;top=208;right=W-15
     vals=[v for _,ys,_ in series for v in ys];hi=max(vals)*1.12;hi=hi or 1
-    d.add(String(0,257,title,fontName='Helvetica-Bold',fontSize=11,fillColor=NAVY))
-    d.add(String(0,242,ylabel,fontSize=8,fillColor=GREY))
+    d.add(Text(0,257,title,fontName=FONT_BOLD,fontSize=FONT_SIZE,fillColor=NAVY))
+    d.add(Text(0,242,ylabel,fontSize=FONT_SIZE,fillColor=GREY))
     for j in range(5):
         v=hi*j/4;y=bottom+(top-bottom)*j/4
-        d.add(Line(left,y,right,y,strokeColor=LIGHT));d.add(String(left-7,y-3,F(v,2),textAnchor='end',fontSize=8,fillColor=GREY))
+        d.add(Line(left,y,right,y,strokeColor=LIGHT));d.add(Text(left-7,y-3,F(v,2),textAnchor='end',fontSize=FONT_SIZE,fillColor=GREY))
     for j,label in enumerate(labels):
-        x=left+(right-left)*j/(len(labels)-1);d.add(String(x,bottom-15,str(label),textAnchor='middle',fontSize=8,fillColor=GREY))
-    d.add(String((left+right)/2,5,'Rebalance every grid steps (categorical spacing)',textAnchor='middle',fontSize=8,fillColor=GREY))
+        x=left+(right-left)*j/(len(labels)-1);d.add(Text(x,bottom-15,str(label),textAnchor='middle',fontSize=FONT_SIZE,fillColor=GREY))
+    d.add(Text((left+right)/2,5,'Rebalance every grid steps (categorical spacing)',textAnchor='middle',fontSize=FONT_SIZE,fillColor=GREY))
     for i,(name,ys,col) in enumerate(series):
         pts=[]
         for j,v in enumerate(ys):
             x=left+(right-left)*j/(len(ys)-1);y=bottom+(top-bottom)*v/hi;pts.extend([x,y]);d.add(Circle(x,y,2.6,fillColor=col,strokeColor=col))
-        d.add(PolyLine(pts,strokeColor=col,strokeWidth=1.7));x=left+130*i;d.add(Line(x,224,x+15,224,strokeColor=col,strokeWidth=2));d.add(String(x+19,221,name,fontSize=8,fillColor=col))
+        d.add(PolyLine(pts,strokeColor=col,strokeWidth=1.7));x=left+130*i;d.add(Line(x,224,x+15,224,strokeColor=col,strokeWidth=2));d.add(Text(x+19,221,name,fontSize=FONT_SIZE,fillColor=col))
     return d
 
 def intervals(rows):
     d=Drawing(W,282);left=172;right=W-18;bottom=32;top=250;lo=-.8;hi=.3
     x=lambda v:left+(v-lo)/(hi-lo)*(right-left)
-    d.add(String(0,269,'RMSE difference: every 4 steps minus every step',fontName='Helvetica-Bold',fontSize=10.5,fillColor=NAVY))
+    d.add(Text(0,269,'RMSE difference: every 4 steps minus every step',fontName=FONT_BOLD,fontSize=FONT_SIZE,fillColor=NAVY))
     for v in [-.8,-.6,-.4,-.2,0,.2]:
-        d.add(Line(x(v),bottom,x(v),top,strokeColor=GREY if v==0 else LIGHT,strokeWidth=.8));d.add(String(x(v),bottom-15,F(v,1),textAnchor='middle',fontSize=8,fillColor=GREY))
+        d.add(Line(x(v),bottom,x(v),top,strokeColor=GREY if v==0 else LIGHT,strokeWidth=.8));d.add(Text(x(v),bottom-15,F(v,1),textAnchor='middle',fontSize=FONT_SIZE,fillColor=GREY))
     names={'flat_25':'Constant 25%','low_to_high':'15% to 40%','high_to_low':'40% to 15%','conditional_down_jump':'Conditional jump'}
     for i,r in enumerate(rows):
         y=top-14-i*26;a,b=r['rmse_difference_percentile95'];col=BLUE if b<0 else GREY
-        d.add(String(left-9,y-3,f"{names[r['scenario']]} | {r['fee_bps']} bps",textAnchor='end',fontSize=8.5,fillColor=NAVY))
+        d.add(Text(left-9,y-3,f"{names[r['scenario']]} | {r['fee_bps']} bps",textAnchor='end',fontSize=FONT_SIZE,fillColor=NAVY))
         d.add(Line(x(a),y,x(b),y,strokeColor=col,strokeWidth=2));d.add(Line(x(a),y-4,x(a),y+4,strokeColor=col));d.add(Line(x(b),y-4,x(b),y+4,strokeColor=col));d.add(Circle(x(r['rmse_difference']),y,3,fillColor=col,strokeColor=col))
-    d.add(String((left+right)/2,1,'USD per option unit; pointwise 95% paired bootstrap intervals',textAnchor='middle',fontSize=8,fillColor=GREY))
+    d.add(Text((left+right)/2,1,'USD per option unit; pointwise 95% paired bootstrap intervals',textAnchor='middle',fontSize=FONT_SIZE,fillColor=GREY))
     return d
 
 def footer(canvas,doc):
-    canvas.setStrokeColor(LIGHT);canvas.line(46,48,549,48);canvas.setFillColor(GREY);canvas.setFont('Helvetica',8)
+    canvas.setStrokeColor(LIGHT);canvas.line(46,48,549,48);canvas.setFillColor(GREY);canvas.setFont(FONT_REGULAR,FONT_SIZE)
     canvas.drawString(46,34,'P5 | Synthetic research | thvh2006 | 26 November 2026');canvas.drawRightString(549,34,str(doc.page))
     canvas.setTitle('P5 Options Volatility and Hedging Lab - Technical Report');canvas.setAuthor('thvh2006');canvas.setSubject('Synthetic pricing and hedge-cost experiments; no observed market performance')
 
@@ -154,9 +165,16 @@ def main():
     p('Reproduction','SubP5');p('Run the commands in README from the project root. The Python pricing and simulation engines use the standard library. Excel builds require artifact-tool; read-only workbook checks use openpyxl. Report generation uses ReportLab and pypdf. Browser QA is manual automation evidence and must be repeated for a changed host or layout. The original 0.1 baseline is preserved as a distinct configuration.','SmallP5')
     out=OUT/'P5_Technical_Report.pdf';doc=SimpleDocTemplate(str(out),pagesize=A4,leftMargin=46,rightMargin=46,topMargin=42,bottomMargin=62,title='P5 Options Volatility and Hedging Lab - Technical Report',author='thvh2006')
     doc.build(s,onFirstPage=footer,onLaterPages=footer)
-    reader=PdfReader(out);assert len(reader.pages)==9,len(reader.pages)
+    reader=PdfReader(out);assert 9<=len(reader.pages)<=12,len(reader.pages)
     texts=[p.extract_text() for p in reader.pages];assert all(len(t)>300 for t in texts)
-    report=dict(status='PASS',pages=len(texts),author=reader.metadata.author,figures=2,source_mode='saved synthetic project outputs',title=reader.metadata.title)
+    used_sizes=set();used_fonts=set()
+    def audit_text(text,cm,tm,font,size):
+        if text.strip():
+            used_sizes.add(round(float(size),4));used_fonts.add(str(font.get('/BaseFont','')) if font else 'UNKNOWN')
+    for pdf_page in reader.pages:pdf_page.extract_text(visitor_text=audit_text)
+    assert used_sizes=={float(FONT_SIZE)},used_sizes
+    assert all('TimesNewRoman' in name for name in used_fonts),used_fonts
+    report=dict(status='PASS',font_family='Times New Roman',font_sizes_pt=sorted(used_sizes),embedded_text_fonts=sorted(used_fonts),pages=len(texts),author=reader.metadata.author,figures=2,source_mode='saved synthetic project outputs',title=reader.metadata.title)
     report['evidence_sha256']={name:hashlib.sha256((OUT/name).read_bytes()).hexdigest() for name in ['research_results.json','holdout_results.json','representative_hedge.json','browser_checks.json','excel_checks.json','excel_export_checks.json','excel_cross_engine_checks.json','validation.json']}
     (OUT/'report_checks.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
 if __name__=='__main__':main()
