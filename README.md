@@ -6,7 +6,7 @@ This project asks a practical model-risk question: **why can an option be priced
 
 **Version 0.3.0 · Synthetic research · Python + JavaScript + Excel**
 
-[Technical report](outputs/P5_Technical_Report.pdf) · [Download Excel](outputs/P5_Options_Research_Model.xlsx?raw=true) · [Notebook](notebooks/01_foundation_walkthrough.ipynb) · [Download source package](outputs/P5_Options_Research_Foundation_2026-11-26.zip?raw=true)
+[Live dashboard](https://thvh2006.github.io/options-volatility-hedging-lab/) · [Technical report](outputs/P5_Technical_Report.pdf) · [Download Excel](outputs/P5_Options_Research_Model.xlsx?raw=true) · [Notebook](notebooks/01_foundation_walkthrough.ipynb) · [Download source package](outputs/P5_Options_Research_Foundation_2026-11-26.zip?raw=true)
 
 > All prices, paths and cost experiments in this release are synthetic. The results describe numerical implementation and hedge error under stated assumptions. They are not an observed-market backtest or an investment track record.
 
@@ -93,7 +93,7 @@ Negative cash may borrow at the financing rate plus the specified borrowing spre
 | [Technical report — 9 pages](outputs/P5_Technical_Report.pdf) | Assumptions, numerical validation, ledger mechanics, cost/risk results, paired uncertainty and limitations |
 | [Excel model — 9 sheets](outputs/P5_Options_Research_Model.xlsx?raw=true) | How prices, Greeks, IV, tree values and a complete cash ledger are calculated with spreadsheet formulas |
 | [Walkthrough notebook](notebooks/01_foundation_walkthrough.ipynb) | Seven sequentially executed Python cells connecting pricing, accounting and experiments |
-| [Research design — Vietnamese](docs/P5_Research_Design_VI.md) | Research questions, hypotheses, contract choices, data requirements and remaining milestones |
+| [Research design — English](docs/P5_Research_Design.md) | Research questions, hypotheses, contract choices, data requirements and remaining milestones |
 | [Validation note](docs/VALIDATION_NOTE.md) | Exact scope of implementation checks and cross-engine comparisons |
 | [Claim/evidence matrix](docs/claim_evidence.csv) | Which claims have synthetic evidence and which remain untested |
 | [Source register](configs/sources.json) | Contract/API documentation and replication references reviewed for the project |
@@ -136,6 +136,8 @@ These commands check the models, reproduce the baseline and extension, and rebui
 
 ### Run the explorer
 
+**Open the hosted dashboard: [https://thvh2006.github.io/options-volatility-hedging-lab/](https://thvh2006.github.io/options-volatility-hedging-lab/)**
+
 The prebuilt `index.html` is self-contained. From the repository root:
 
 ```bash
@@ -150,7 +152,7 @@ To rebuild the explorer and execute its JavaScript checks, use Node.js:
 node scripts/build_explorer.mjs
 ```
 
-There is currently **no configured public dashboard deployment**. The repository and downloadable artifacts are public; the interactive explorer runs locally.
+The dashboard is hosted on GitHub Pages from the public `main` branch. The same self-contained explorer can also run locally using the command above. Pricing controls recalculate in the browser; saved experiments remain fixed.
 
 ### Optional workbook, report and release builds
 
