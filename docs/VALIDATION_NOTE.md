@@ -10,7 +10,7 @@ The option liability, hedge trades and cash financing reconcile numerically. The
 | --- | --- | --- |
 | Python core | BSM, Black76, European CRR, antithetic MC, bounded IV and analytic Greeks | 26 passing unit tests; standard library engine |
 | Browser pricer | Separate JavaScript implementation | 108 Python prices; maximum absolute difference 0.00001568, tolerance 0.0001 USD/unit |
-| Explorer application | Pricing inputs, reset, expiry, saved ledger and experiment tables | 9 minimal-DOM checks; real Chrome local desktop controls, tables and XLSX download checked |
+| Explorer application | Pricing inputs, reset, expiry, saved ledger and experiment tables | 9 minimal-DOM checks; real Chrome local and hosted desktop controls, tables and XLSX download checked |
 | Excel | Independent BSM, Greeks, 60-row IV bisection, 16-step European tree, 257-row cash ledger | 21 pricing/Greek/tree and 3,084 ledger comparisons over call, put and nonzero dividend/borrowing-spread cases; tolerance 1e-7 |
 | Exported XLSX | Formula caches read without authoring | 1,031 default-case comparisons; zero formula errors |
 | Second calculation engine | LibreOffice recalculation of exported XLSX | 1,031 default-case comparisons; maximum difference below 8e-13; Microsoft Excel native not tested |
@@ -53,6 +53,8 @@ The conditional jump scenario imposes a 20% down jump at the midpoint of every s
 
 Run commands in README in order. `run_research.py` preserves the original baseline; `run_holdout.py` writes separate extension outputs. Rebuilding Excel requires artifact-tool; read-only workbook verification uses openpyxl. Core pricing and simulation have no third-party dependencies. Notebook cells run through an ordinary-Python sequential harness; a Jupyter-kernel execution is not claimed.
 
-Observed quote rights/QC/calibration, exchange-specific hedge accounting, a locked advanced challenger, mobile/deployed-host visual QA and the observed-market report remain open. The package contains no admitted venue quotes. Public attribution is thvh2006 or blank; personal home paths and names are excluded from packaged files and Office XML.
+Observed quote rights/QC/calibration, exchange-specific hedge accounting, a locked advanced challenger, mobile and cross-browser visual QA and the observed-market report remain open. The package contains no admitted venue quotes. Public attribution is thvh2006 or blank; personal home paths and names are excluded from packaged files and Office XML.
 
 The synthetic module now has a nine-page technical report, rendered and inspected page by page. Public distribution was explicitly approved and the repository is available at https://github.com/thvh2006/options-volatility-hedging-lab. The first downloaded public archive matched all 53 reviewed file hashes; public commit author names use thvh2006.
+
+The English dashboard is hosted at https://thvh2006.github.io/options-volatility-hedging-lab/ . Desktop Chrome pricing, boundary states, fee selection, terminal ledger and workbook download were checked on 27 November 2026. The research design is available in English; its earlier filename retains an English compatibility link.
