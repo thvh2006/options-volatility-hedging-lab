@@ -1,9 +1,9 @@
 {
   "status": "PASS",
   "version": "0.3.0",
-  "archive_sha256": "55313ee4647961884b7ae7b214ff55c78326d81b1adce1ded7fb7d2eeb36b08a",
-  "archive_bytes": 751248,
-  "verified_files": 52,
+  "archive_sha256": "1a44f0aa28038b8520c4ca7ba1c9dd8cc17b0a9e2fd2349b01ce372b59ae24eb",
+  "archive_bytes": 751258,
+  "verified_files": 54,
   "archive_crc": "PASS",
   "working_files_match_archive": true,
   "report_evidence_hashes": "PASS",

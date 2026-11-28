@@ -1,10 +1,10 @@
 {
-  "status": "PASS_DESKTOP_LOCAL",
+  "status": "PASS_LOCAL_AND_HOSTED_DESKTOP",
   "browser": "Google Chrome",
   "viewport": {
     "width": 1512
   },
-  "scope": "Local desktop controls and visual inspection; mobile and deployed host not tested",
+  "scope": "Local and GitHub Pages desktop checks; mobile and other browsers not certified",
   "cases": [
     {
       "case": "default_call",
@@ -71,7 +71,29 @@
     "terminal ledger",
     "path plot and footer"
   ],
-  "tested_html_sha256": "409661962b31f87ce0cdffa1b65915764d6844578e3d1ab48560eba2d8912d14",
+  "tested_html_sha256": "4e12acb2e799ee45a3746473a58988a5d83aaa5c3db8076cd4d8e2a41243d17f",
   "date": "2026-11-26",
-  "accessible_select_labels": "Verified using Option type, Realised path volatility and Spot transaction cost"
+  "accessible_select_labels": "Verified using Option type, Realised path volatility and Spot transaction cost",
+  "previous_local_html_sha256": "409661962b31f87ce0cdffa1b65915764d6844578e3d1ab48560eba2d8912d14",
+  "hosted": {
+    "url": "https://thvh2006.github.io/options-volatility-hedging-lab/",
+    "date": "2026-11-27",
+    "language": "en",
+    "viewport_width": 1512,
+    "document_width": 1512,
+    "research_design": "docs/P5_Research_Design.md",
+    "checks": [
+      "default call 10.4506",
+      "put 5.5735",
+      "blank input rejected",
+      "reset",
+      "expiry price 0 and Greeks unavailable",
+      "zero-volatility price 4.8771 and Greeks unavailable",
+      "20bps table RMSE 1.2498 versus 0.8658",
+      "terminal holding and option liability zero, cash 0.5434",
+      "Excel download byte hash matches original"
+    ],
+    "deployment": "GitHub Pages main branch root",
+    "horizontal_overflow": false
+  }
 }
