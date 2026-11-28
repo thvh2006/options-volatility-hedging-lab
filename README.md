@@ -179,12 +179,12 @@ The recorded build used **Python 3.12.14** and **Node.js 24.22.3**. The engine's
 | --- | --- | --- |
 | Core mathematics and accounting | **26 unit tests**: parity, boundaries, Greeks, IV, tree, MC, ledger, costs and fixture QC | [validation.json](outputs/validation.json), [tests](tests) |
 | Independent JavaScript pricing | **108 price comparisons**, tolerance `1e-4` USD/unit; largest difference about `1.568e-5` | [javascript_checks.json](outputs/javascript_checks.json) |
-| Explorer application | **9 minimal-DOM checks**, plus separate local Chrome desktop controls/layout/download inspection | [browser_checks.json](outputs/browser_checks.json) |
+| Explorer application | **9 minimal-DOM checks**, plus local and hosted Chrome desktop controls/layout/download inspection | [browser_checks.json](outputs/browser_checks.json) |
 | Independent Excel calculation | **21 price/Greek/tree** and **3,084 ledger** comparisons across three input cases, tolerance `1e-7` | [excel_checks.json](outputs/excel_checks.json) |
 | Export and second engine | **1,031 default-case comparisons** after XLSX export and LibreOffice recalculation; largest cross-engine difference below `8e-13` | [Export checks](outputs/excel_export_checks.json), [cross-engine checks](outputs/excel_cross_engine_checks.json) |
 | Release integrity | Archive CRC, per-file hashes, evidence hashes and identity scans including Office XML and PDF text/metadata | [release_checks.json](outputs/release_checks.json), [manifest](outputs/package_manifest.json) |
 
-These checks establish specific implementation properties. Native Microsoft Excel, mobile layout, a Jupyter kernel and a deployed dashboard host have not been certified. Monte Carlo and bootstrap intervals quantify uncertainty conditional on the configured simulation assumptions.
+These checks establish specific implementation properties. Native Microsoft Excel, mobile layout and a Jupyter kernel have not been certified. The hosted dashboard was checked in desktop Chrome. Monte Carlo and bootstrap intervals quantify uncertainty conditional on the configured simulation assumptions.
 
 ## Repository map
 
@@ -205,6 +205,6 @@ The current hedge is a synthetic cash-funded spot account with fractional trades
 
 The quote-QC module is tested on fixtures. No rights-cleared observed option chain, calibrated smile/surface or empirically validated market strategy is included. BTC_USDC linear European options are a documented candidate for a future market module; admitting them requires both data-rights evidence and the appropriate contract/settlement adapter.
 
-Remaining work is to admit suitable observed data, validate quote coverage and calibration, implement venue-specific hedge accounting, compare a locked challenger under explicit objectives and costs, and test mobile/deployed-host behaviour. More complex models are not presented as superior before those comparisons exist.
+Remaining work is to admit suitable observed data, validate quote coverage and calibration, implement venue-specific hedge accounting, compare a locked challenger under explicit objectives and costs, and test additional viewports and browsers. More complex models are not presented as superior before those comparisons exist.
 
 Public project attribution: **thvh2006**. The distributable package excludes private snapshots, credentials, personal home paths, dependency directories and internal QA images.
